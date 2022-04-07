@@ -10,7 +10,9 @@ public class Util {
 
     public static Connection getSQLConnection() {
         try {
-            return DriverManager.getConnection(URL, USER, PASSWORD);
+            Connection connection = DriverManager.getConnection(URL, USER, PASSWORD);
+            connection.setAutoCommit(false);
+            return connection;
         } catch (Exception e) {
             System.out.println(e.getCause());
         }
